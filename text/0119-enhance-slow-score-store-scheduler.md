@@ -105,7 +105,7 @@ It introduces a dedicated multi-threaded `HealthChecker` that probes every store
 
 Because network status between nodes is bidirectional, if nodes A and B experience jitter, both $Score_{AB}$ and $Score_{BA}$ rise. You must examine scores involving other nodes to pinpoint the actual slow node.
 
-With nodes a, b, c, d, e, use the improved logic below:
+The pseudo code is as follows:
 
 ```
 potential = set()
