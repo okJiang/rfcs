@@ -159,5 +159,5 @@ On each store heartbeat, compute that store’s average `NetworkSlowScore` towar
 
 - `NETWORK_ROUND_TICKS`: 3. This means `NetworkSlowScore` is recalculated after every three `inspect-network-interval` cycles.
 - `NETWORK_TIMEOUT_RATIO_THRESHOLD`: 1.0. See the formulas in the "Score increase" section for how it’s used.
-- `NETWORK_TIMEOUT_THRESHOLD`: 1. Any probe taking longer than 1 s is treated as a timeout.
+- `NETWORK_TIMEOUT_THRESHOLD`: 1. Unit: sec. Any probe taking longer than 1 sec s is treated as a timeout.
 
