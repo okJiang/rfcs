@@ -146,14 +146,19 @@ On each store heartbeat, compute that store’s average `NetworkSlowScore` towar
 - Range: 0 ∪ [10, +∞]
 - This parameter is used to set the inspect interval in the health check. Zero represents network inspect is disabled. It also represents the sensitivity and growth rate. When the `inspect-network-interval` is smaller, the more data is detected per unit time, and the score is likely to grow faster.
 
-`network-recovery-duration`
+`recovery-duration`
 - Type: Integer
-- Default value: 10
-- Unit: min
-- Range: [1, +∞]
-- This parameter is used to set the network recovery duration. 
+- Default value: 1800
+- Unit: s
+- Range: [0, +∞]
+- This parameter is used to set the slow store recovery duration. It already exists in PD, and in the future it will jointly control the recovery duration of disk and network.
 
-`inspect-network-interval` is a parameter in tikv-server, which is similar with [`inspect-interval`](https://docs.pingcap.com/tidb/dev/tikv-configuration-file/#inspect-interval). And `network-recovery-duration` can be set via `pd-ctl scheduler config evict-slow-store-scheduler set`.
+`enable-network-slow-store`
+- Type: Bool
+- Default value: false
+- This is a switch to control network-slow-store-scheduler
+
+`inspect-network-interval` is a parameter in tikv-server, which is similar with [`inspect-interval`](https://docs.pingcap.com/tidb/dev/tikv-configuration-file/#inspect-interval). And `recovery-duration` and `enable-network-slow-store` can be set via `pd-ctl scheduler config evict-slow-store-scheduler set`.
 
 #### Internal
 
