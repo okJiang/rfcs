@@ -97,7 +97,7 @@ In the latest implementation, we completed the second method.
 
 ### HealthChecker
 
-It introduces a dedicated multi-threaded `HealthChecker` that probes every store once per `InspectInterval`. So each time SlowScore is computed it can directly read the latest network latency information from the `HealthChecker`.
+It introduces a dedicated multi-threaded `HealthChecker` that probes every store once per `InspectInterval`. Therefore, each time the SlowScore is computed, it can directly fetch the latest network latency information from the `HealthChecker` .
 
 ### PD scheduler
 
@@ -143,14 +143,14 @@ On each store heartbeat, compute that store’s average `NetworkSlowScore` towar
 - Type: Integer
 - Default value: 100
 - Unit: ms
-- Range: 0 ∪ [10, +∞]
+- Range: 0 ∪ [10, +∞)
 - This parameter is used to set the inspect interval in the health check. Zero represents network inspect is disabled. It also represents the sensitivity and growth rate. When the `inspect-network-interval` is smaller, the more data is detected per unit time, and the score is likely to grow faster.
 
 `recovery-duration`
 - Type: Integer
 - Default value: 1800
 - Unit: s
-- Range: [0, +∞]
+- Range: [0, +∞)
 - This parameter is used to set the slow store recovery duration. It already exists in PD, and in the future it will jointly control the recovery duration of disk and network.
 
 `enable-network-slow-store`
@@ -164,5 +164,5 @@ On each store heartbeat, compute that store’s average `NetworkSlowScore` towar
 
 - `NETWORK_ROUND_TICKS`: 3. This means `NetworkSlowScore` is recalculated after every three `inspect-network-interval` cycles.
 - `NETWORK_TIMEOUT_RATIO_THRESHOLD`: 1.0. See the formulas in the "Score increase" section for how it’s used.
-- `NETWORK_TIMEOUT_THRESHOLD`: 1. Unit: sec. Any probe taking longer than 1 sec s is treated as a timeout.
+- `NETWORK_TIMEOUT_THRESHOLD`: 1. Unit: sec. Any probe taking longer than 1 sec is treated as a timeout.
 
